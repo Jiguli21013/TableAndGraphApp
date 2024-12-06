@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/headerItemLL"
+    style="@style/LLItemPointStyle"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="5dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textXItemTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/text_view_title_x"
+        android:layout_weight="1"/>
+
+    <View
+        android:id="@+id/verticalLineView"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/gray" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textYItemTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/text_view_title_y"
+        android:layout_weight="1"/>
+
+</LinearLayout>

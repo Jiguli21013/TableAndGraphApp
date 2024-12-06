@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.yanchelenko.tableandgraphapp.ui.UIState"/>
+        <import type="android.view.inputmethod.EditorInfo" />
+
+        <variable
+            name="sharedVM"
+            type="com.yanchelenko.tableandgraphapp.ui.home.HomeViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/homeLL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="25sp"
+            android:text="@string/text_view_inserts_points" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/countET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:enabled="@{!sharedVM.isUiLoading}"
+            android:afterTextChanged="@{(str) -> sharedVM.newCountValue(str)}"
+            android:hint="@string/edit_text_hint_points_"
+            android:inputType="number"
+            android:maxLength="3" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/sentRequestBtn"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> sharedVM.onBtnSendClicked()}"
+            android:paddingHorizontal="40dp"
+            android:enabled="@{!sharedVM.isUiLoading &amp;&amp; !sharedVM.countPoints.isEmpty()}"
+            android:text="@string/button_go_text" />
+
+    </LinearLayout>
+
+</layout>

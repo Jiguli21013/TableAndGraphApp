@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.yanchelenko.tableandgraphapp.ui.UIState"/>
+
+        <variable
+            name="vm"
+            type="com.yanchelenko.tableandgraphapp.ui.table.TableViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/TableViewLL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tablePointsRV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:maxHeight="300dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingVertical="50dp"
+            android:layout_weight="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_table_point" />
+
+        <View
+            android:id="@+id/horizontalLine1View"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+
+        <com.yanchelenko.tableandgraphapp.ui.table.graphview.GridTableView
+            android:id="@+id/customViewTable"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+
+        <View
+            android:id="@+id/horizontalLine2View"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveFileBtn"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="25dp"
+            android:text="@string/button_save_to_file" />
+
+    </LinearLayout>
+</layout>
