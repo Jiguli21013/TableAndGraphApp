@@ -8,7 +8,7 @@
         <import type="android.view.inputmethod.EditorInfo" />
 
         <variable
-            name="sharedVM"
+            name="vm"
             type="com.yanchelenko.tableandgraphapp.ui.home.HomeViewModel" />
     </data>
 
@@ -32,8 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:enabled="@{!sharedVM.isUiLoading}"
-            android:afterTextChanged="@{(str) -> sharedVM.newCountValue(str)}"
+            android:enabled="@{!vm.isUiLoading}"
+            android:afterTextChanged="@{(str) -> vm.newCountValue(str)}"
             android:hint="@string/edit_text_hint_points_"
             android:inputType="number"
             android:maxLength="3" />
@@ -43,9 +43,9 @@
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> sharedVM.onBtnSendClicked()}"
+            android:onClick="@{() -> vm.onBtnSendClicked()}"
             android:paddingHorizontal="40dp"
-            android:enabled="@{!sharedVM.isUiLoading &amp;&amp; !sharedVM.countPoints.isEmpty()}"
+            android:enabled="@{!vm.isUiLoading &amp;&amp; !vm.countPoints.isEmpty()}"
             android:text="@string/button_go_text" />
 
     </LinearLayout>

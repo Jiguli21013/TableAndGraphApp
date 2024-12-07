@@ -34,7 +34,7 @@ class TableFragment : BaseFragment<FragmentTableBinding, TableViewModel>(R.layou
 
     private fun displayPoints(points: ListOfPointsUI) {
         //todo сделать красивей
-        val adapter = PointsAdapter(points = points.points.toImmutableList()) //todo
+        val adapter = PointsAdapter(points = points.points.toImmutableList())
         binding.tablePointsRV.layoutManager = LinearLayoutManager(requireContext())
         binding.tablePointsRV.adapter = adapter
     }

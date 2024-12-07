@@ -28,7 +28,7 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEW_MODEL : BaseViewMode
     ): View {
         _binding = DataBindingUtil.inflate(inflater, layout, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.setVariable(BR.sharedVM, viewModel)
+        binding.setVariable(BR.vm, viewModel)
 
         viewModel.screenFlow.observeWithLifecycle(this) { screen ->
             navigateToScreen(screen = screen)

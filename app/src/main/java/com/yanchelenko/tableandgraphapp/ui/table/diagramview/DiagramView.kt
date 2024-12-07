@@ -92,8 +92,6 @@ class DiagramView @JvmOverloads constructor(
         canvas.restore()
     }
 
-    /** Zoom functionality */
-
     override fun onTouchEvent(event: MotionEvent): Boolean {
         scaleDetector.onTouchEvent(event) // Обрабатываем жесты масштабирования
         gestureDetector.onTouchEvent(event) // Передаем событие в GestureDetector

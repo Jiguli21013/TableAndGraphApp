@@ -34,11 +34,7 @@ class HomeViewModel @Inject constructor(
         _countPoints.value = newValue.toString()
     }
 
-    //todo где хранить uiState? Base View Model ?
-    private val _uiState = MutableSharedFlow<UIState>()
-    val uiState = _uiState.asSharedFlow()
-
-    val isUiLoading = _uiState.map { it == UIState.Loading }.stateIn(
+    val isUiLoading = uiState.map { it == UIState.Loading }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.Lazily,
         initialValue = false
@@ -56,21 +52,18 @@ class HomeViewModel @Inject constructor(
                     }
                 }
                 is UIAction.NAVIGATE -> {
-
                     navigateToScreen(screen = SCREENS.TABLE.apply {
                         navDirections = HomeFragmentDirections
                             .actionHomeFragmentToTableFragment(action.points)
                     })
                 }
+                else -> {}
             }
         }
     }
 
-    private suspend fun setState(newUIState: UIState) {
-        println("---setState---${newUIState}")
-        _uiState.emit(newUIState)
-    }
 
+    //todo или сразу вызывать onAction в xml?
     fun onBtnSendClicked() {
         val count = countPoints.value.toIntOrNull() ?: return
         onAction(action = UIAction.SEND(count = count))

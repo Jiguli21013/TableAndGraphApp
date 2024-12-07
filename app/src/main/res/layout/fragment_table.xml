@@ -48,6 +48,7 @@
             android:layout_height="2dp"
             android:background="@color/black" />
 
+        <!-- todo onClick дергать функцию onAction ? -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/saveFileBtn"
             style="@style/Widget.MaterialComponents.Button"
@@ -56,6 +57,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginHorizontal="15dp"
             android:layout_marginBottom="25dp"
+            android:onClick="{() -> vm.onBtnSaveFileClicked()}"
             android:text="@string/button_save_to_file" />
 
     </LinearLayout>
