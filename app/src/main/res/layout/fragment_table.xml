@@ -36,7 +36,7 @@
             android:layout_height="2dp"
             android:background="@color/black" />
 
-        <com.yanchelenko.tableandgraphapp.ui.table.graphview.GridTableView
+        <com.yanchelenko.tableandgraphapp.ui.table.diagramview.DiagramView
             android:id="@+id/customViewTable"
             android:layout_width="match_parent"
             android:layout_height="0dp"

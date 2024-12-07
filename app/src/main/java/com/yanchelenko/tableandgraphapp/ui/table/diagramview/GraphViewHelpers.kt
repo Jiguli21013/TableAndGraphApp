@@ -1,4 +1,4 @@
-package com.yanchelenko.tableandgraphapp.ui.table.graphview
+package com.yanchelenko.tableandgraphapp.ui.table.diagramview
 
 import android.graphics.Bitmap
 import android.graphics.Canvas

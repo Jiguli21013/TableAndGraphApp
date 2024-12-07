@@ -2,15 +2,13 @@ package com.yanchelenko.tableandgraphapp.ui.table
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yanchelenko.tableandgraphapp.R
 import com.yanchelenko.tableandgraphapp.databinding.FragmentTableBinding
-import com.yanchelenko.tableandgraphapp.ui.home.HomeViewModel
 import com.yanchelenko.tableandgraphapp.ui.base.BaseFragment
 import com.yanchelenko.tableandgraphapp.ui.models.PointUI
-import com.yanchelenko.tableandgraphapp.ui.table.graphview.saveViewToFile
+import com.yanchelenko.tableandgraphapp.ui.table.diagramview.saveViewToFile
 import com.yanchelenko.tableandgraphapp.ui.table.recycler.adapters.PointsAdapter
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
