@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:id="@+id/nav_graph"
-    app:startDestination="@id/tableFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -24,6 +24,12 @@
         android:name="com.yanchelenko.tableandgraphapp.ui.table.TableFragment"
         android:label="todo"
         tools:layout="@layout/fragment_table">
+
+        <argument
+            android:name="listOfPointsArgs"
+            app:argType="com.yanchelenko.tableandgraphapp.ui.models.ListOfPointsUI"
+            app:nullable="true" />
+
     </fragment>
 
 </navigation>

@@ -7,7 +7,7 @@ fun NavController.setCurrentScreenWithNavController(screen: SCREENS) {
         runCatching { navigate(screen.screenId) }
     } else {
         runCatching {
-            navigate(screen.navDirections!!)
+            navigate(screen.navDirections ?: return)
             screen.navDirections = null
         }
     }

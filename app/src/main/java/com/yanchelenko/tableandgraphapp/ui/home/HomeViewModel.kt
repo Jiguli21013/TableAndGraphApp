@@ -6,10 +6,8 @@ import com.yanchelenko.tableandgraphapp.ui.base.BaseViewModel
 import com.yanchelenko.tableandgraphapp.domain.usecase.points.GetPointsUseCase
 import com.yanchelenko.tableandgraphapp.ui.UIAction
 import com.yanchelenko.tableandgraphapp.ui.UIState
-import com.yanchelenko.tableandgraphapp.ui.models.PointUI
 import com.yanchelenko.tableandgraphapp.utils.navigation.SCREENS
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -22,6 +20,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import com.yanchelenko.tableandgraphapp.ui.toState
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
@@ -32,10 +31,10 @@ class HomeViewModel @Inject constructor(
     val countPoints: StateFlow<String> = _countPoints
 
     fun newCountValue(newValue: Editable) {
-        _countPoints.value = newValue.toString() ?: ""
+        _countPoints.value = newValue.toString()
     }
 
-    //todo где хранить uiState?
+    //todo где хранить uiState? Base View Model ?
     private val _uiState = MutableSharedFlow<UIState>()
     val uiState = _uiState.asSharedFlow()
 
@@ -52,19 +51,16 @@ class HomeViewModel @Inject constructor(
                 is UIAction.SEND -> {
                     setState(newUIState = UIState.Loading)
                     withContext(Dispatchers.IO) {
-                        /* todo request не могу придумать как лучше передавать данные в TableFragment))))
-                        setState(newUIState = useCase.execute(count = action.count).toState().also {
-                            points = (it as UIState.Success).points
-                        })
-
-                         */
-                        //mock request
-                        delay(300L)
-                        setState(newUIState = UIState.Success(points = listOf<PointUI>().toImmutableList()))
+                        delay(300L)    //todo
+                        setState(newUIState = useCase.execute(count = action.count).toState())
                     }
                 }
                 is UIAction.NAVIGATE -> {
-                    navigateToScreen(screen = SCREENS.TABLE)
+
+                    navigateToScreen(screen = SCREENS.TABLE.apply {
+                        navDirections = HomeFragmentDirections
+                            .actionHomeFragmentToTableFragment(action.points)
+                    })
                 }
             }
         }

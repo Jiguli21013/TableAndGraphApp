@@ -34,7 +34,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                         println("---UIState---Success---observeState()")
                         println("---uiState---points---${uiState.points}")
                         (activity as MainActivity).setVisibilityProgressBar(isVisible = false)
-                        viewModel.onAction(action = UIAction.NAVIGATE(route = R.id.action_homeFragment_to_tableFragment))
+                        viewModel.onAction(
+                            action = UIAction.NAVIGATE(
+                                route = R.id.action_homeFragment_to_tableFragment,
+                                points = uiState.points
+                            )
+                        )
                     }
                     is UIState.Loading -> {
                         (activity as MainActivity).setVisibilityProgressBar(isVisible = true)
@@ -56,7 +61,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         }
     }
 
-    fun hideKeyboard() {
+    private fun hideKeyboard() {
         val imm = requireContext().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
     }

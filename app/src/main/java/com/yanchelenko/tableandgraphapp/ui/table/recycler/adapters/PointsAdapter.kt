@@ -41,7 +41,6 @@ class PointsAdapter(private val points: ImmutableList<PointUI>) : RecyclerView.A
     override fun getItemCount(): Int = points.size
 
     companion object {
-        //todo как отрефачить?
         private const val ITEM_TYPE_HEADER = 0
         private const val ITEM_TYPE_ITEM_POINT = 1
     }

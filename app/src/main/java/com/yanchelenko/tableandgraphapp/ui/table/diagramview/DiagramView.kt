@@ -7,6 +7,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
+import com.yanchelenko.tableandgraphapp.ui.models.ListOfPointsUI
 import com.yanchelenko.tableandgraphapp.ui.models.PointUI
 import com.yanchelenko.tableandgraphapp.ui.table.diagramview.interfaces.GraphStateController
 import com.yanchelenko.tableandgraphapp.ui.table.diagramview.interfaces.Renderer
@@ -105,9 +106,9 @@ class DiagramView @JvmOverloads constructor(
 
 
     //todo как лучше прокидывать данные в эту вью
-    fun setData(newData: List<PointUI>) {
+    fun setData(newData: ListOfPointsUI) {
         points.clear()
-        points.addAll(newData)
+        points.addAll(newData.points)
         invalidate()
     }
 
